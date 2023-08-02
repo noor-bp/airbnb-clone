@@ -17,6 +17,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
+  textInput2: {
+    fontSize: 20,
+    marginBottom: 20,
+    // marginLeft: 15,
+    // textAlign: "center",
+    justifyContent: "center",
+    backgroundColor: "#e3e3e3",
+  },
   arrowIcon: {
     marginTop: 3,
   },

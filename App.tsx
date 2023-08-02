@@ -10,6 +10,7 @@ import DestinationSearchPage from "./src/screens/DestinationSearchPage";
 import GuestsPage from "./src/screens/GuestsPage";
 import "react-native-gesture-handler";
 import Router from "./src/navigation/Router";
+import WebViewComp from "./src/components/WebView/WebViewComp";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,9 +27,18 @@ export default function App() {
         {/* <SearchResultPage /> */}
         {/* <DestinationSearchPage /> */}
         {/* <GuestsPage /> */}
+        <WebViewComp />
         <StatusBar style="auto" />
       </View>
       <Router />
+
+      {/* <script
+        src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+        async
+        defer
+      ></script> */}
+
+      {/* web view */}
     </>
   );
 }

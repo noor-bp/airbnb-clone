@@ -5,6 +5,9 @@ import searchResults from "../../../config/data/search";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import SearchBox from "./SearchBox";
+import SuggestionRow from "./SuggestionRow";
 
 interface DestinationSearchCompProps {}
 
@@ -15,34 +18,27 @@ const DestinationSearchComp: React.FC<DestinationSearchCompProps> = () => {
     <>
       <View style={styles.container}>
         {/* Input components */}
-        <View style={styles.searchInputContainer}>
-          <Text style={styles.arrowIcon}>
-            <AntDesign name="search1" size={24} color="gray" />
-          </Text>
-          <TextInput
-            style={styles.textInput}
+        <View style={{ height: 200 }}>
+          <GooglePlacesAutocomplete
             placeholder="Where are you going?"
-            value={inputText}
-            onChangeText={setInputText}
+            onPress={(data, details = null) => {
+              // 'details' is provided when fetchDetails = true
+              console.log(data, details);
+            }}
+            styles={{
+              textInput: styles.textInput2,
+            }}
+            query={{
+              key: "AIzaSyCuyNNQbJcq2x9nH6xNVORus9fUp690KJo",
+              language: "en",
+            }}
+            renderRow={(item) => <SearchBox item={item} />}
           />
         </View>
+        {/* <SearchBox /> */}
 
         {/* List of destinations */}
-
-        <FlatList
-          data={searchResults}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => navigation.navigate("Guests")}
-              style={styles.row}
-            >
-              <View style={styles.iconContainer}>
-                <Entypo name="location-pin" size={30} color="black" />
-              </View>
-              <Text>{item.description}</Text>
-            </Pressable>
-          )}
-        />
+        <SuggestionRow />
       </View>
     </>
   );
